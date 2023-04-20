@@ -1,3 +1,5 @@
+import os
+
 def words_count(book):
     count = len(book.split())
     return count
@@ -15,8 +17,21 @@ def char_n_reps(book):
                 char_dictionary[ch.lower()] += 1
     return char_dictionary
 
+def print_report(character_dictionary, filepath):
+    character_list = []
+    for ch in character_dictionary:
+        character_list.append((ch, character_dictionary[ch]))
+    character_list.sort()
+    total_words = words_count(file_contents)
+    print(f"--- Begin report of {filepath} ---")
+    print(f"{total_words} found in the document")
+    for ch in character_list:
+        print(f"The '{ch[0]}' character was found {ch[1]} times")
+
+
 with open("books/frankenstein.txt") as f:
     file_contents = f.read()
-    # total_words = words_count(file_contents)
+    file_path = os.path.relpath(os.path.abspath(f.name), os.path.abspath("."))
     char_reps = char_n_reps(file_contents)
-    print(f"Character reps array: {char_reps}")
+    # print(f"Character reps array: {char_reps}")
+    print_report(char_reps, file_path)
