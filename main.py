@@ -24,7 +24,7 @@ def print_report(character_dictionary, filepath):
     character_list.sort()
     total_words = words_count(file_contents)
     print(f"--- Begin report of {filepath} ---")
-    print(f"{total_words} found in the document")
+    print(f"{total_words} words found in the document")
     for ch in character_list:
         print(f"The '{ch[0]}' character was found {ch[1]} times")
 
